@@ -7,10 +7,10 @@ class Key {
 }
 
 class Person {
-  constructor(private key: Key,) {}
+  constructor(private key: Key) {}
   
   getKey() {
-    return key;
+    return this.key;
   }
 }
 
@@ -32,10 +32,11 @@ class MyHouse extends House {
 
   constructor(key: Key) {
     super();
+    this.key = key;
   }
 
   openDoor(keyInput: Key) {
-    if (keyInput === key) {
+    if (keyInput.getSignature() === this.key.getSignature()) {
       this.door = true;
     }
   }
